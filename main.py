@@ -1,3 +1,4 @@
+import itertools
 
 exceptionName = "Sintax error"
 operands = "!>&|"
@@ -110,11 +111,39 @@ def parseConstantsMoreExpressions(s):
 
     return parseConstantsLinearExpression(s)
 
+def parseComplexExpression(s):
+    s = parseString(s)
 
-s  = "(1 -> 1) | ( 1 -> 0)"
+    letters = []
 
-s = parseString(s)
+    for i in s:
+        if i.isalpha() and i not in letters:
+            letters.append(i)
 
-s = parseConstantsMoreExpressions(s)
+    letters.sort()
+
+    it = itertools.product ([0,1],  repeat= len(letters) )
+
+    for letter in letters:
+        print(letter + " ", end = "")
+    print("")
+
+    for i in it:
+        temp = s
+
+        count = 0
+        for letter in letters:
+            temp = temp.replace(letter, str(i[count]))
+            print(str(i[count]) + " ", end = "")
+            count += 1
+
+        print (parseConstantsMoreExpressions(temp))
+
+
+
+
+s  = "(a -> b) & (b -> a)"
 
 print(s)
+print("")
+parseComplexExpression(s)

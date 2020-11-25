@@ -1,6 +1,9 @@
 import itertools
 
-exceptionName = "Sintax error"
+class LogicalSintaxError(Exception):
+    pass
+
+
 operands = "!>&|"
 
 def parseString(s):
@@ -11,7 +14,7 @@ def parseString(s):
     
     for i in s:
         if i not in operands + "()" + "01" and not i.isalpha():
-            raise Exception(exceptionName)
+            raise LogicalSintaxError()
     
             
     return s
@@ -38,7 +41,7 @@ def parseOneExpression(v1, op, v2):
     elif op == "|":
         returnVal = v1 or v2
     else:
-        raise Exception(exceptionName)
+        raise LogicalSintaxError()
     
     return "1" if returnVal else "0"
 
@@ -50,7 +53,7 @@ def parseConstantsLinearExpression(s):
             s = s.replace("!1", "0")
             s = s.replace("!0", "1")
         elif "!" in s:
-            raise Exception(exceptionName)
+            raise LogicalSintaxError()
         else:
             break
 
@@ -63,14 +66,14 @@ def parseConstantsLinearExpression(s):
         if state == "var1":
             var1 = i
             if var1 != '0' and var1 !='1':
-                raise Exception(exceptionName)
+                raise LogicalSintaxError()
             state = "op"
 
 
         elif state == "var2":
             var2 = i
             if var2 != '0' and var2 !='1':
-                raise Exception(exceptionName)
+                raise LogicalSintaxError()
             state = "op"
             var1 = parseOneExpression(var1, operand, var2)
 
@@ -78,7 +81,7 @@ def parseConstantsLinearExpression(s):
         elif state == "op":
             operand = i
             if operand not in operands:
-                raise Exception(exceptionName)
+                raise LogicalSintaxError()
             state = "var2"
 
 
@@ -99,7 +102,7 @@ def parseConstantsMoreExpressions(s):
                 lastOpen = pos
             elif i == ")":
                 if lastOpen == -1:
-                    raise Exception(exceptionName)
+                    raise LogicalSintaxError()
                 else:
                     s = s[:lastOpen] + parseConstantsLinearExpression(s[lastOpen+1:pos]) + s[pos+1:]
                     lastOpen = -1
@@ -107,7 +110,7 @@ def parseConstantsMoreExpressions(s):
             pos += 1
 
         if lastOpen != -1:
-            raise Exception(exceptionName)
+            raise LogicalSintaxError()
 
     return parseConstantsLinearExpression(s)
 
@@ -141,9 +144,12 @@ def parseComplexExpression(s):
 
 
 
+try:
 
-s  = "(a -> b) & (b -> a)"
-
-print(s)
-print("")
-parseComplexExpression(s)
+    s  = "(a -> b) & (b -> a)"
+    
+    print(s)
+    print("")
+    parseComplexExpression(s)
+except LogicalSintaxError:
+    print("Sintax error")

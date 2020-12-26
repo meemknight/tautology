@@ -35,3 +35,21 @@ def descompunereText(x):
         sep = ' * '
 
     print("\n")
+
+def aflaOrdin(n, x):
+    numitor = gcd(n, x)
+    if n % numitor != 0:
+        return 0
+    return n // numitor
+
+def aflaOrdinText(n, x):
+    print(f"ord({x}) în Z{n} = {n} / ({n}, {2})")
+    print(f"= {n} / {gcd(n, 2)}")
+    ordin = aflaOrdin(n, x)
+
+    if ordin == 0:
+        print("Nu exista ordin\n")
+        return 0
+    else:
+        print(f"= {ordin}\n")
+        return ordin

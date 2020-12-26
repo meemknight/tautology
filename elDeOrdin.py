@@ -8,7 +8,7 @@ print("\n\n---------------------")
 
 print(f"Determinați elementul de ordin {ordin} din Z {z}\n")
 
-print("Fie ū ∈ Zn, atunci o(ū) = n/(n, ū)  unde (n, ū) = cmmdc(n, ū)\n")
+print("Fie ū ∈ Zn, atunci ord(ū) = n/(n, ū)  unde (n, ū) = cmmdc(n, ū)\n")
 print(f"=> fie x ∈ Z{z}\n=> {ordin} = {z}/({z}, x) \n=> {ordin}*({z}, x) = {z}")
 
 if z%ordin != 0:

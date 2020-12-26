@@ -1,11 +1,8 @@
 import util
 from math import gcd, lcm 
 
-#ordin = int(input("Ordinul: "))
-#z = int(input("Z cât: "))
-
-ordin = 12
-z = 180
+ordin = int(input("Ordinul: "))
+z = int(input("Z cât: "))
 
 print("\n\n---------------------")
 
@@ -55,7 +52,7 @@ for i in range(1, 180):
         rez.append(i)
 
 
-print("=> x=( ", end = '')
+print("=> x = ( ", end = '')
 separator = ''
 for i in rez:
     print(separator, end='')

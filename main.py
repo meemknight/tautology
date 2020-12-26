@@ -1,15 +1,17 @@
 import itertools
+import sys
 
 class LogicalSintaxError(Exception):
     pass
 
 
-operands = "!>&|"
+operands = "!>&|="
 
 def parseString(s):
     s = str(s)
     s = s.replace(" ", "")
     s = s.replace("\n", "")
+    s = s.replace("<->", "=")
     s = s.replace("->", ">")
     
     for i in s:
@@ -40,6 +42,8 @@ def parseOneExpression(v1, op, v2):
         returnVal = v1 and v2
     elif op == "|":
         returnVal = v1 or v2
+    elif op == "=":
+        returnVal = (v1 == v2)
     else:
         raise LogicalSintaxError()
     
@@ -115,6 +119,8 @@ def parseConstantsMoreExpressions(s):
     return parseConstantsLinearExpression(s)
 
 def parseComplexExpression(s):
+    print(s)
+    print("")
     s = parseString(s)
 
     letters = []
@@ -146,10 +152,9 @@ def parseComplexExpression(s):
 
 try:
 
-    s  = "(a -> b) & (b -> a)"
+    #s  = sys.argv[1]
     
-    print(s)
-    print("")
-    parseComplexExpression(s)
+    #parseComplexExpression('((a->b) & (b->a)) -> (!(a&!(b)))')
+    parseComplexExpression('(a->b) & (b->a)')
 except LogicalSintaxError:
     print("Sintax error")

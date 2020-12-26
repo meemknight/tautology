@@ -1,3 +1,7 @@
+#
+# exemplu   Det el de ordin 12 din Z180
+#
+
 import util
 from math import gcd, lcm 
 
@@ -35,7 +39,7 @@ for key, val in factoriZ.items():
     if val == 0:
         continue
     
-    if factoriDiv[key] == 0:
+    if key not in factoriDiv:
         print(f"{key}(căciulă) nu divide x")
     elif factoriDiv[key] == val:
         pass
@@ -47,7 +51,7 @@ print("")
 
 rez = []
 
-for i in range(1, 180):
+for i in range(1,  z):
     if(gcd(z,i) == div):
         rez.append(i)
 

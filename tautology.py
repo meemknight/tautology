@@ -139,6 +139,9 @@ def parseComplexExpression(s):
         print(letter + " ", end = "")
     print("")
 
+    fnd = ""
+    fnc = ""
+
     for i in it:
         temp = s
 
@@ -147,9 +150,44 @@ def parseComplexExpression(s):
             temp = temp.replace(letter, str(i[count]))
             print(str(i[count]) + " ", end = "")
             count += 1
+        rezult = parseConstantsMoreExpressions(temp)
+        print (rezult)
 
-        print (parseConstantsMoreExpressions(temp))
+        if rezult == "1": #fnd
+            count = 0
+            fnd += "("
+            symbol = ""
+            for j in letters:
+                fnd+=symbol
+                if (i[count]):
+                    fnd += j
+                else:
+                    fnd += "!"
+                    fnd += j
+                symbol = "^"
 
+                count+=1
+            fnd += ")V"
+
+        if rezult == "0": #fnc
+            count = 0
+            fnc += "("
+            symbol = ""
+            for j in letters:
+                fnc+=symbol
+                if not (i[count]):
+                    fnc += j
+                else:
+                    fnc += "!"
+                    fnc += j
+                symbol = "V"
+
+                count+=1
+            fnc += ")^"
+
+    print("")
+    print("FND",fnd[:-1])
+    print("FNC",fnc[:-1])
 
 
 try:
@@ -157,11 +195,9 @@ try:
     #s  = sys.argv[1]
     
     #parseComplexExpression('((a->b) & (b->a)) -> (!(a&!(b)))')
-    parseComplexExpression('a ^ b')
+    parseComplexExpression('a -> b')
 except LogicalSintaxError:
     print("Sintax error")
 
 
-#todo rename main
-#todo fnd fnc
 #todo davis putman 135

@@ -6,11 +6,11 @@ import util
 from math import gcd, lcm 
 import itertools
 
-def ordineXY(z):
+def ordineXY(z, necunoscuta = 'x'):
 
-    print(f"ord(x(căciulă)) / |Z{z}| =>\nord(x(căciulă)) / {z} => ")
+    print(f"ord({necunoscuta}(căciulă)) / |Z{z}| =>\nord({necunoscuta}(căciulă)) / {z} => ")
 
-    print("ord(x(căciulă)) ∈ { ", end='')
+    print(f"ord({necunoscuta}(căciulă)) ∈ " + " { ", end='')
 
     ret = []
 
@@ -46,9 +46,9 @@ print("adevărat\n")
 
 print(f"fie (x(căciula), y(altă căciulă)) ∈ G cu ord(x, y) = {ordin} <=> [ord(x), ord(y)] = {ordin},   unde [a, b] = cmmmc(a, b)\n")
 
-ordX = ordineXY(z1)
+ordX = ordineXY(z1, 'x')
 print()
-ordY = ordineXY(z2)
+ordY = ordineXY(z2, 'y')
 
 products = itertools.product(ordX, ordY)
 

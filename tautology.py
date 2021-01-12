@@ -13,6 +13,8 @@ def parseString(s):
     s = s.replace("\n", "")
     s = s.replace("<->", "=")
     s = s.replace("->", ">")
+    s = s.replace("V", "|")
+    s = s.replace("^", "&")
     
     for i in s:
         if i not in operands + "()" + "01" and not i.isalpha():
@@ -155,6 +157,11 @@ try:
     #s  = sys.argv[1]
     
     #parseComplexExpression('((a->b) & (b->a)) -> (!(a&!(b)))')
-    parseComplexExpression('(a->b) & (b->a)')
+    parseComplexExpression('a ^ b')
 except LogicalSintaxError:
     print("Sintax error")
+
+
+#todo rename main
+#todo fnd fnc
+#todo davis putman 135

@@ -35,6 +35,7 @@ def descompunereText(x):
         sep = ' * '
 
     print("\n")
+    return factori
 
 def aflaOrdin(n, x):
     numitor = gcd(n, x)

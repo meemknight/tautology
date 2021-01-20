@@ -1,5 +1,14 @@
 from copy import deepcopy
 import itertools
+import re
+
+"""
+solves davis-putman algoritm
+
+usage : pune in variabila s clauza ca in exemple
+
+"""
+
 
 def readClauza(c):
     negatie = c.startswith("!")
@@ -30,26 +39,40 @@ def clauzaPurTriviala(c):
     
 
 def parseString(s):
-    s = s.replace("{", "[")
-    s = s.replace("}", "]")
     s = s.replace("¬", "!")
     s = s.replace("v", "")
-    return s
+    print(s)
+    reg = re.compile(r'{[1-9! ,]*}')
+
+    final = []
+
+    for i in reg.findall(s):
+        i = i.replace('{', '')
+        i = i.replace('}', '')
+        reg2 = re.compile(r'([1-9!]*)')
+        el = []
+
+        for j in reg2.findall(i):
+            if j:
+                el.append(str(j))
+
+        final.append(el)
+    
+    return final
 
 def parsePrint(s):
     s = str(s)
     s = s.replace("[", "{")
     s = s.replace("]", "}")
     s = s.replace("!", "¬")
-    #s = s.replace("", "")
     return s
 
-#print(parseString(r"""{{¬v1, v2, ¬v4}, {¬v3, ¬v2}, {v1, v3}, {v1}, {v3}, {v4}}"""))
 
+#exemple
 #s = [ ["1", "!3"], ["2", "1"], ["2", "!1", "3"]]
 #s = [ ["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
-#= {{¬v1, v2, ¬v4}, {¬v3, ¬v2}, {v1, v3}, {v1}, {v3}, {v4}}
-s = [["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
+s = parseString(r"{{¬v1, v2, ¬v4}, {¬v3, ¬v2}, {v1, v3}, {v1}, {v3}, {v4}}")
+#s = [["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
 
 I = 1
 print(f"\ni := {I}, S1 := S.")
@@ -79,8 +102,7 @@ while True:
     print(f"T¹{I} := {parsePrint(tSimplu)};  ", sep="", end="")
     print(f"T⁰{I} := {parsePrint(tNegat)};", sep="", end="")
     print("")
-    
-    "T¹ T⁰"
+
 
     tSimpluEliminat = deepcopy(tSimplu)    
     tNegatEliminat = deepcopy(tNegat)

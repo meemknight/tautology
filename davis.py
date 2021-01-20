@@ -29,12 +29,36 @@ def clauzaPurTriviala(c):
         return False
     
 
+def parseString(s):
+    s = s.replace("{", "[")
+    s = s.replace("}", "]")
+    s = s.replace("¬", "!")
+    s = s.replace("v", "")
+    return s
+
+def parsePrint(s):
+    s = str(s)
+    s = s.replace("[", "{")
+    s = s.replace("]", "}")
+    s = s.replace("!", "¬")
+    #s = s.replace("", "")
+    return s
+
+#print(parseString(r"""{{¬v1, v2, ¬v4}, {¬v3, ¬v2}, {v1, v3}, {v1}, {v3}, {v4}}"""))
 
 #s = [ ["1", "!3"], ["2", "1"], ["2", "!1", "3"]]
-s = [ ["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
+#s = [ ["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
+#= {{¬v1, v2, ¬v4}, {¬v3, ¬v2}, {v1, v3}, {v1}, {v3}, {v4}}
+s = [["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
+
+I = 1
+print(f"\ni := {I}, S1 := S.")
+
 
 while True:
     x = input("Introdu variabila: ")
+
+
     tSimplu = []
 
     for i in s:
@@ -47,8 +71,16 @@ while True:
         if "!" + x in i:
             tNegat += [i]
 
-    print(tSimplu)
-    print(tNegat, '\n')
+    #print(tSimplu)
+    #print(tNegat, '\n')
+
+
+    print(f"P{I}.1 x{I} := v{x};  ", sep="", end="")
+    print(f"T¹{I} := {parsePrint(tSimplu)};  ", sep="", end="")
+    print(f"T⁰{I} := {parsePrint(tNegat)};", sep="", end="")
+    print("")
+    
+    "T¹ T⁰"
 
     tSimpluEliminat = deepcopy(tSimplu)    
     tNegatEliminat = deepcopy(tNegat)
@@ -61,8 +93,8 @@ while True:
         if "!" + x in i:
             i.remove("!" + x)
 
-    print(tSimpluEliminat)
-    print(tNegatEliminat, "\n")
+    #print(tSimpluEliminat)
+    #print(tNegatEliminat, "\n")
 
     u = []
 
@@ -74,7 +106,9 @@ while True:
 
             u+=[cur]
 
-    print(u, "\n")
+    
+    print(f"P{I}.2 U{I} := {parsePrint(u)}; ", sep="", end="\n")
+    #print(u, "\n")
 
     #calculam s prim
 
@@ -98,7 +132,7 @@ while True:
 
     #note vlod: posibil să fie duplicate
     s.extend(u)
-    print(s, "\n")
+    #print(s, "\n")
 
     #s2` eliminam clauzele triviale din s`
 
@@ -114,14 +148,18 @@ while True:
             s.append([])
 
 
-    print(s, "\n")
+    print(f"P{I}.3 S{I} := {parsePrint(s)}; ", sep="", end="\n")
+    #print(s, "\n")
+
+    print(f"P{I}.4 ", sep="", end="")
 
     if s == []:
         print("S este satisfiabilă")
         break
     elif [] in s:
-        print("S e nesatisfiabilă")
+        print("S nu e satisfiabilă")
         break
     else:
-        pass
-        #i++
+        I += 1
+        print(f"i := {I} and go to P{I}.1.")
+        

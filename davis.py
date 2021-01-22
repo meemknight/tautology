@@ -71,7 +71,7 @@ def parsePrint(s):
 #exemple
 #s = [ ["1", "!3"], ["2", "1"], ["2", "!1", "3"]]
 #s = [ ["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
-s = parseString(r"{{¬v1, v2, ¬v4}, {¬v3, ¬v2}, {v1, v3}, {v1}, {v3}, {v4}}")
+s = parseString(r"{{v2}, {¬v2, ¬v3}, {¬v3, v4}, {¬v3}, {¬v1, ¬v2}, {v1}, {¬v3, ¬v4}, {¬v4}}")
 #s = [["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
 
 I = 1
@@ -122,11 +122,11 @@ while True:
 
     if tSimplu != [] and tNegat != []:
         for i in tSimpluEliminat:
-            cur = i
+            cur = deepcopy(i)
             for j in tNegatEliminat:
-                cur += j
-
-            u+=[cur]
+                #cur += j
+                u+=[j + i]
+            #u+=[cur]
 
     
     print(f"P{I}.2 U{I} := {parsePrint(u)}; ", sep="", end="\n")

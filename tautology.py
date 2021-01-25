@@ -195,7 +195,10 @@ try:
     #s  = sys.argv[1]
     
     #parseComplexExpression('((a->b) & (b->a)) -> (!(a&!(b)))')
-    parseComplexExpression('(B&A) | (C&!A)')
+
+    e = 'a -> (!b -> !b)'
+
+    parseComplexExpression(e) 
 except LogicalSintaxError:
     print("Sintax error")
 

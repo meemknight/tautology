@@ -196,7 +196,8 @@ try:
     
     #parseComplexExpression('((a->b) & (b->a)) -> (!(a&!(b)))')
 
-    e = 'a -> (!b -> !b)'
+    #e = '(a -> !b) -> !(b -> c)'
+    e = '(a V !c) ^ (a V b) ^ (b V b) ^ (b V !c)'
 
     parseComplexExpression(e) 
 except LogicalSintaxError:

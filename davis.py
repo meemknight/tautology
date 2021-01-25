@@ -73,7 +73,7 @@ def parsePrint(s):
 #s = [ ["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
 #bagati in s ori lista de liste ori cu parsestring ca in curs
 
-s = parseString(r"S = {{¬v0, ¬v2, ¬v4}, {¬v2, ¬v3}, {v0, ¬v3}, {v0, v4}, {v3}}") #nu folositi v0 ca are bug in el inlocuiti cu altceva 
+s = parseString(r"S = {{v1}, {¬v1, v2}, {¬v2, v3}, {¬v3, v4}, {¬v1, ¬v4, ¬v2}}") #nu folositi v0 ca are bug in el inlocuiti cu altceva 
 #s = [["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
 
 I = 1
@@ -130,7 +130,9 @@ while True:
                 u+=[j + i]
             #u+=[cur]
 
-    
+    for i in range(len(u)):
+        u[i] = list(dict.fromkeys(u[i]))
+
     print(f"P{I}.2 U{I} := {parsePrint(u)}; ", sep="", end="\n")
     #print(u, "\n")
 
@@ -156,6 +158,10 @@ while True:
 
     #note vlod: posibil să fie duplicate
     s.extend(u)
+
+    for i in range(len(s)):
+        s[i] = list(dict.fromkeys(s[i]))
+
     #print(s, "\n")
 
     #s2` eliminam clauzele triviale din s`

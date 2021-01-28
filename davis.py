@@ -72,8 +72,9 @@ def parsePrint(s):
 #s = [ ["1", "!3"], ["2", "1"], ["2", "!1", "3"]]
 #s = [ ["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
 #bagati in s ori lista de liste ori cu parsestring ca in curs
+#nu folositi v0 ca are bug in el inlocuiti cu altceva !!!!!!
 
-s = parseString(r"S = {{v1}, {¬v1, v2}, {¬v2, v3}, {¬v3, v4}, {¬v1, ¬v4, ¬v2}}") #nu folositi v0 ca are bug in el inlocuiti cu altceva 
+s = parseString(r"{{v4}, {v1, ¬v2}, {v1, ¬v4}, {¬v2, ¬v4}, {¬v3, ¬v4}, {¬v1, v2, v3}}") 
 #s = [["!1", "2", "!4"], ["!3", "!2"], ["1", "3"], ["1"], ["3"], ["4"]]
 
 I = 1

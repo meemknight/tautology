@@ -3,14 +3,12 @@ from math import gcd
 from functools import reduce
 import itertools
 
-#z = input("Z cât: ")
-z = 300
+z = int(input("Z cât: "))
 
 print("\n---------------")
 print("a) Găsiți el. inversabile:")
 print("În Zn, x̂ e inversabil <=>  (x, n) = 1")
 print(r"Deci U(Zn) = {x̂  ∈ Z", z, r"/ (x,", z, r") = 1 }")
-print("")
 
 print(f"U(Z{z}) = ", r"{", sep='', end='')
 
@@ -20,6 +18,7 @@ for i in range(0, z):
         rasp.append(i)
 
 print(*rasp, sep=', ', end='}\n')
+print(len(rasp))
 
 print("")
 
@@ -118,3 +117,43 @@ for i in it:
             print(f"dau restul 1 la împărțirea cu {izomorfism[k]}" , end='\n')
         k += 1  
     print("")
+
+
+print(f"e) Să se determine elementele idempotente de grad cel mult ... din Z{z}[x]")
+print(f"Se știe că polinoamele idempotente R[x] sunt constantele idempotente, așadar trebuie să determinăm\
+elementele idempotente din Z{z}")
+print(f"Aceiași Rezolvare de la punctul d).\n")
+
+
+grad = int(input(f"Determinați numărul elementelor inversabile de grad cel mult: "))
+print(f"din Z{z}[x]\n")
+print(f"Știm că un polinom din R[x] este inversabil <=> are termenul liber inversabil, iar toți ceilalți \
+coeficienți sunt nilpotenți")
+
+subscript = ["₀" , "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"]
+
+print("Fie f = ", end='')
+
+elements = []
+for i in range(0, grad + 1):
+    elements.append("a" + subscript[i] + "x^" + f"{i}")
+
+print(*elements, sep = " + ", end=f" ∈ Z{z} inversabile.\n")
+print(f"=> a₀ ∈ U(Z{z}), iar aₖ ∈ N(Z{z}), k ∈ ", end='')
+
+elements = [i for i in range(1, grad+1)]
+print("{ ", end='')
+print(*elements, end=' }\n\n', sep=", ")
+print(f"|U(Z{z})| = {z} * Produs (1-1/p) pentru p factor prim al lui {z}")
+elements = [f"(1 - 1/{i})" for i in desc.keys()]
+print(f"={z}", *elements,sep='')
+elements = [1 - 1/i for i in desc.keys()]
+produsFactori2 = reduce(lambda x, y: x*y,elements)
+print(f"= {z * produsFactori2:.2f}\n")
+
+elements = [i for i in range(1, grad+1)]
+print("|N(Z{z})| = | ", end='')
+print(*elements, sep=" * ", end='')
+print(f" (căciulă) Z{z}| = {2 ** len(desc.keys())}")
+print(f"Deci, numărul elementelor inversabile de grad cel mult {grad} din Z{z}[x] este: \
+   {z * produsFactori2 :.2f} * {2 ** len(desc.keys())} ^ {grad}  = {z * produsFactori2 * ((2 ** len(desc.keys())) ** grad) :.2f} ")

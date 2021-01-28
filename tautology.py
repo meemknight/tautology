@@ -197,9 +197,11 @@ try:
     #parseComplexExpression('((a->b) & (b->a)) -> (!(a&!(b)))')
 
     #e = '(a -> !b) -> !(b -> c)'
-    e = '(a V !c) ^ (a V b) ^ (b V b) ^ (b V !c)'
+    e = '(!(a V b) -> !a)'
+    e2 = '(a -> (!a -> b))'
 
     parseComplexExpression(e) 
+    parseComplexExpression(e2) 
 except LogicalSintaxError:
     print("Sintax error")
 

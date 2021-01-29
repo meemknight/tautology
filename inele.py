@@ -42,13 +42,13 @@ print(f"=> {produsFactori}(căciulă) * Z{z} =", "{ ", end='')
 
 i = produsFactori
 
-rasp = []
+nilpotenti = [0]
 while i < z:
-    rasp.append(i)
+    nilpotenti.append(i)
     i += produsFactori
 del i
 
-print(*rasp, sep=', ', end='}\n\n')
+print(*nilpotenti, sep=', ', end='}\n\n')
 
 print("c) Găsiți divizorii lui zero")
 print("x dacă ∃ x' a.î. x*x' = 0")
@@ -154,6 +154,6 @@ print(f"= {z * produsFactori2:.2f}\n")
 elements = [i for i in range(1, grad+1)]
 print("|N(Z{z})| = | ", end='')
 print(*elements, sep=" * ", end='')
-print(f" (căciulă) Z{z}| = {2 ** len(desc.keys())}")
+print(f" (căciulă) Z{z}| = {len(nilpotenti)}")
 print(f"Deci, numărul elementelor inversabile de grad cel mult {grad} din Z{z}[x] este: \
-   {z * produsFactori2 :.2f} * {2 ** len(desc.keys())} ^ {grad}  = {z * produsFactori2 * ((2 ** len(desc.keys())) ** grad) :.2f} ")
+   {z * produsFactori2 :.2f} * {len(nilpotenti)} ^ {grad}  = {z * produsFactori2 * (len(nilpotenti) ** grad) :.2f} ")

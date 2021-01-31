@@ -97,6 +97,10 @@ def rezolvareElDeOrdin(ordin, z, necunoscuta = 'x'):
 
     rez = []
 
+    if ordin == 1:
+        rez.append(0)
+        print(f"Daca ordinul e 1 atunci avem și soluția {necunoscuta} = 0")
+
     for i in range(1,  z):
         if(gcd(z,i) == div):
             rez.append(i)

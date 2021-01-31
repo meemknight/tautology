@@ -119,13 +119,19 @@ for i in it:
     print("")
 
 
-print(f"e) Să se determine elementele idempotente de grad cel mult ... din Z{z}[x]")
+print(f"e) Să se dea exemplu de polinoame nilpotente: ")
+print(f"Un polinom este nilpotent dacă are coeficienții nilpotenți\n")
+
+print(f"f) Să se dea exemplu de polinom inversabil: ")
+print(f"Un polinom este inversabil dacă termenul liber e inversabil iar restul coeficienților sunt nilpotenți\n")
+
+print(f"g) Să se determine elementele idempotente de grad cel mult ... din Z{z}[x]")
 print(f"Se știe că polinoamele idempotente R[x] sunt constantele idempotente, așadar trebuie să determinăm\
 elementele idempotente din Z{z}")
 print(f"Aceiași Rezolvare de la punctul d).\n")
 
 
-grad = int(input(f"f) Determinați numărul elementelor inversabile de grad cel mult: "))
+grad = int(input(f"h) Determinați numărul elementelor inversabile de grad cel mult: "))
 print(f"din Z{z}[x]\n")
 print(f"Știm că un polinom din R[x] este inversabil <=> are termenul liber inversabil, iar toți ceilalți \
 coeficienți sunt nilpotenți")

@@ -63,7 +63,7 @@ print(transpozitii)
 
 signatura = (-1)**len(transpozitii)
 
-print("\nc)Determinați signatura permutarii σ:")
+print("\nc)Determinați signatura permutarii σ:  ( ε(σ) )")
 print(f"Avem N={len(transpozitii)} transpoziții în descompunerea lui σ")
 print(f"ε(σ) = (-1)^N = (-1)^{len(transpozitii)} = {signatura}")
 
@@ -87,7 +87,7 @@ for i in range(1, lungime+1):
     
 print(permutarePatrat)
 
-print("\nf)Determinați ordinul σ:")
+print("\nf)Determinați ordinul σ:    (la ce putere e permutare identica)")
 print("ordinul unei permutări este cmmmc[ordin cicli]")
 print("ordinul unui ciclu este lungimea ciclului =>")
 lungimiCicli = [len(i) for i in cicli]
@@ -95,6 +95,18 @@ ordin = math.lcm(*lungimiCicli)
 print(f"ord(σ) = [{lungimiCicli}] = {ordin}")
 
 
-print("\ng)Determinați ordinul σ^x:")
+print("\ng)Determinați ordinul x^2 = σ:")
+if signatura == 1:
+    print("Programul nu stie sa rezolve asta :(((")
+else:
+    print("x^2 permutare pară")
+    print("σ este impară (aflat la d) => ecuația nu are soluții.")
+
+
+//print("\nh)Determinați ordinul x^3 = σ:")
+
+
+
+print("\n)Determinați ordinul σ^x:")
 x = int(input("introdu x: "))
 print(f"ordin(σ^{x}) = ordin(σ)/(ordin(σ), {x}) = {ordin}/({ordin}, {x}) = {ordin}/{math.gcd(ordin, x)} = {ordin / math.gcd(ordin, x)} ")

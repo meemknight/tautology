@@ -57,7 +57,7 @@ print(f"În Z{z} toate elementele x̂, (x, n) ≠ 1 sunt divizori ai lui 0 \n")
 print( r"=> {", sep='', end='')
 
 rasp = []
-for i in range(0, z):
+for i in range(1, z):
     if gcd(i, z) != 1:
         rasp.append(i)
 
@@ -65,7 +65,7 @@ print(*rasp, sep=', ', end='}\n\n')
 
 print("d) Găsiți elementele idempotente.")
 print("X e idempotent <=> x^2 = x\n")
-print(f"Avem izomorfismul ρ: Z{z} : ", end='')
+print(f"Avem izomorfismul ρ: Z{z} -> ", end='')
 
 rasp = []
 izomorfism = []
@@ -125,7 +125,7 @@ elementele idempotente din Z{z}")
 print(f"Aceiași Rezolvare de la punctul d).\n")
 
 
-grad = int(input(f"Determinați numărul elementelor inversabile de grad cel mult: "))
+grad = int(input(f"f) Determinați numărul elementelor inversabile de grad cel mult: "))
 print(f"din Z{z}[x]\n")
 print(f"Știm că un polinom din R[x] este inversabil <=> are termenul liber inversabil, iar toți ceilalți \
 coeficienți sunt nilpotenți")

@@ -10,6 +10,6 @@ z = int(input("Z : "))
 
 print("\n\n---------------------")
 
-print(f"Determinați elementul de ordin {ordin} din Z {z}\n")
+print(f"Determinați elementul de ordin {ordin} din Z {z}  (grup cu adunare)\n")
 
 util.rezolvareElDeOrdin(ordin, z)

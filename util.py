@@ -59,7 +59,7 @@ def aflaOrdinText(n, x):
 def rezolvareElDeOrdin(ordin, z, necunoscuta = 'x'):
 
     print("\nFie ū ∈ Zn, atunci ord(ū) = n/(n, ū)  unde (n, ū) = cmmdc(n, ū)\n")
-    print(f"=> fie {necunoscuta} ∈ Z{z}\n=> {ordin} = {z}/({z}, x) \n=> {ordin}*({z}, {necunoscuta }) = {z}")
+    print(f"=> fie {necunoscuta} ∈ Z{z}\n=> {ordin} = {z}/({z}, {necunoscuta}) \n=> {ordin}*({z}, {necunoscuta }) = {z}")
 
     if z%ordin != 0:
         print(f"Ordinul trebuie să fie submultiplu de {z}, iar {ordin} nu este submultiplu de {z}\n=> Nu există elemente de ordin {ordin} din Z{z}\n")
@@ -67,7 +67,7 @@ def rezolvareElDeOrdin(ordin, z, necunoscuta = 'x'):
 
     div = z // ordin
 
-    print(f"=> ({z}, x) = {div}\n")
+    print(f"=> ({z}, {necunoscuta}) = {div}\n")
 
     descompunereText(z)
     descompunereText(div)

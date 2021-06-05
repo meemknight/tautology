@@ -103,7 +103,7 @@ else:
     print("σ este impară (aflat la d) => ecuația nu are soluții.")
 
 
-//print("\nh)Determinați ordinul x^3 = σ:")
+#print("\nh)Determinați ordinul x^3 = σ:")
 
 
 
